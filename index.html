@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Rooms - Edukasi Web3 untuk Pemula</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(30, 30, 46, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #00f5ff, #0080ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: rgba(30, 30, 46, 0.8);
+            border: 2px solid rgba(100, 100, 120, 0.5);
+            color: #e0e0e0;
+            padding: 15px 30px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tab-btn:hover {
+            background: rgba(40, 40, 60, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 200, 255, 0.3);
+            border-color: #00f5ff;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #0080ff 0%, #00f5ff 100%);
+            border-color: #00f5ff;
+            color: #000;
+            box-shadow: 0 5px 20px rgba(0, 200, 255, 0.5);
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: rgba(30, 30, 46, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(100, 100, 120, 0.3);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 200, 255, 0.2);
+            background: rgba(40, 40, 60, 0.7);
+            border-color: #00f5ff;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #0080ff 0%, #00f5ff 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 200, 255, 0.3);
+        }
+
+        .card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .article-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .article-item {
+            background: rgba(30, 30, 46, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(100, 100, 120, 0.3);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .article-item:hover {
+            background: rgba(40, 40, 60, 0.7);
+            transform: translateX(10px);
+            border-color: #00f5ff;
+            box-shadow: 0 5px 20px rgba(0, 200, 255, 0.2);
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .search-box {
+            background: rgba(30, 30, 46, 0.8);
+            border: 2px solid rgba(100, 100, 120, 0.5);
+            border-radius: 15px;
+            padding: 15px 20px;
+            width: 100%;
+            font-size: 1em;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+        }
+
+        .search-box::placeholder {
+            color: rgba(200, 200, 200, 0.6);
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #00f5ff;
+            background: rgba(40, 40, 60, 0.9);
+            box-shadow: 0 0 15px rgba(0, 200, 255, 0.3);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            background: rgba(20, 20, 35, 0.6);
+            border-radius: 20px;
+            border: 1px solid rgba(100, 100, 120, 0.3);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(30, 30, 46, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(100, 100, 120, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #00f5ff, #0080ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(0, 128, 255, 0.2);
+            border: 1px solid rgba(0, 245, 255, 0.4);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            color: #00f5ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Crypto Rooms</h1>
+            <p class="tagline">Platform Edukasi Web3 Terlengkap untuk Pemula Indonesia</p>
+        </header>
+
+        <input type="text" class="search-box" placeholder="🔍 Cari topik, airdrop, atau panduan..." id="searchBox">
+
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="switchTab('home')">
+                <i data-lucide="home"></i> Beranda
+            </button>
+            <button class="tab-btn" onclick="switchTab('airdrop')">
+                <i data-lucide="gift"></i> Airdrop
+            </button>
+            <button class="tab-btn" onclick="switchTab('education')">
+                <i data-lucide="book-open"></i> Edukasi
+            </button>
+            <button class="tab-btn" onclick="switchTab('news')">
+                <i data-lucide="newspaper"></i> Berita
+            </button>
+            <button class="tab-btn" onclick="switchTab('tools')">
+                <i data-lucide="wrench"></i> Tools
+            </button>
+        </div>
+
+        <!-- Home Section -->
+        <div id="home" class="content-section active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">1000+</div>
+                    <div>Member Aktif</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div>Panduan Lengkap</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100+</div>
+                    <div>Airdrop Terdaftar</div>
+                </div>
+            </div>
+
+            <h2 style="margin-bottom: 20px;">🌟 Fitur Unggulan</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <i data-lucide="gift" color="white"></i>
+                    </div>
+                    <h3>Airdrop Terbaru</h3>
+                    <p>Informasi airdrop terkini dengan panduan lengkap dan langkah-langkah detail untuk mendapatkan token gratis dari berbagai project Web3.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i data-lucide="graduation-cap" color="white"></i>
+                    </div>
+                    <h3>Edukasi Pemula</h3>
+                    <p>Tutorial step-by-step untuk memulai perjalanan Web3 Anda, dari membuat wallet hingga berinteraksi dengan DeFi dan NFT.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i data-lucide="trending-up" color="white"></i>
+                    </div>
+                    <h3>Analisa Market</h3>
+                    <p>Update harian kondisi pasar crypto, analisa teknikal, dan fundamental untuk membantu pengambilan keputusan investasi Anda.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Airdrop Section -->
+        <div id="airdrop" class="content-section">
+            <h2 style="margin-bottom: 20px;">🎁 Airdrop Aktif</h2>
+            <div class="article-list">
+                <div class="article-item">
+                    <h3>Arbitrum Airdrop - Phase 2</h3>
+                    <p>Dapatkan token ARB gratis dengan berpartisipasi dalam ekosistem Arbitrum. Reward hingga $500 per wallet!</p>
+                    <div class="article-meta">
+                        <span>⏰ Berakhir: 30 Februari 2026</span>
+                        <span>💰 Estimasi: $200-$500</span>
+                        <span>⭐ Difficulty: Medium</span>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <span class="badge">DeFi</span>
+                        <span class="badge">Layer 2</span>
+                        <span class="badge">Confirmed</span>
+                    </div>
+                </div>
+                <div class="article-item">
+                    <h3>zkSync Era Airdrop</h3>
+                    <p>Interaksi dengan zkSync Era untuk kualifikasi airdrop. Protocol Layer 2 dengan teknologi zero-knowledge.</p>
+                    <div class="article-meta">
+                        <span>⏰ Berakhir: TBA</span>
+                        <span>💰 Estimasi: $300-$800</span>
+                        <span>⭐ Difficulty: Easy</span>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <span class="badge">Layer 2</span>
+                        <span class="badge">ZK-Rollup</span>
+                        <span class="badge">Potential</span>
+                    </div>
+                </div>
+                <div class="article-item">
+                    <h3>LayerZero Omnichain Airdrop</h3>
+                    <p>Gunakan bridge LayerZero untuk transfer asset cross-chain dan dapatkan kualifikasi airdrop.</p>
+                    <div class="article-meta">
+                        <span>⏰ Berakhir: TBA</span>
+                        <span>💰 Estimasi: $500-$1000</span>
+                        <span>⭐ Difficulty: Medium</span>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <span class="badge">Cross-Chain</span>
+                        <span class="badge">Infrastructure</span>
+                        <span class="badge">High Potential</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education Section -->
+        <div id="education" class="content-section">
+            <h2 style="margin-bottom: 20px;">📚 Panduan Edukasi</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>1️⃣ Dasar-Dasar Web3</h3>
+                    <p><strong>Topik:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                        <li>Apa itu Blockchain?</li>
+                        <li>Perbedaan Web2 vs Web3</li>
+                        <li>Konsep Decentralization</li>
+                        <li>Smart Contract 101</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>2️⃣ Membuat Wallet</h3>
+                    <p><strong>Tutorial:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                        <li>Setup MetaMask</li>
+                        <li>Keamanan Seed Phrase</li>
+                        <li>Menambah Network</li>
+                        <li>Backup & Recovery</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>3️⃣ DeFi untuk Pemula</h3>
+                    <p><strong>Pembelajaran:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                        <li>Swap Token di DEX</li>
+                        <li>Yield Farming Basics</li>
+                        <li>Liquidity Pool</li>
+                        <li>Staking & Rewards</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>4️⃣ NFT Ecosystem</h3>
+                    <p><strong>Panduan:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                        <li>Membeli NFT Pertama</li>
+                        <li>Minting NFT</li>
+                        <li>NFT Marketplace</li>
+                        <li>Trading Tips</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>5️⃣ Keamanan Web3</h3>
+                    <p><strong>Best Practices:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                        <li>Menghindari Scam</li>
+                        <li>Verifikasi Smart Contract</li>
+                        <li>Hardware Wallet</li>
+                        <li>2FA & Security</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>6️⃣ Advanced Topics</h3>
+                    <p><strong>Level Lanjut:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                        <li>Layer 2 Solutions</li>
+                        <li>Cross-Chain Bridge</li>
+                        <li>DAO Governance</li>
+                        <li>On-Chain Analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- News Section -->
+        <div id="news" class="content-section">
+            <h2 style="margin-bottom: 20px;">📰 Berita & Update Terbaru</h2>
+            <div class="article-list">
+                <div class="article-item">
+                    <h3>Bitcoin ETF Mendapat Approval dari SEC</h3>
+                    <p>Komisi Sekuritas dan Bursa AS menyetujui ETF Bitcoin spot pertama, membuka jalan bagi investor institusional untuk masuk ke pasar crypto dengan lebih mudah.</p>
+                    <div class="article-meta">
+                        <span>📅 15 Januari 2026</span>
+                        <span>👁️ 2.5K views</span>
+                    </div>
+                </div>
+                <div class="article-item">
+                    <h3>Ethereum Berhasil Upgrade ke ETH 3.0</h3>
+                    <p>Network Ethereum menyelesaikan upgrade besar yang meningkatkan skalabilitas hingga 100x lipat dengan tetap mempertahankan desentralisasi.</p>
+                    <div class="article-meta">
+                        <span>📅 14 Januari 2026</span>
+                        <span>👁️ 3.8K views</span>
+                    </div>
+                </div>
+                <div class="article-item">
+                    <h3>Regulasi Crypto Indonesia Terbaru 2026</h3>
+                    <p>Bappebti mengumumkan framework regulasi baru untuk cryptocurrency dan aset digital, memberikan kepastian hukum bagi investor Indonesia.</p>
+                    <div class="article-meta">
+                        <span>📅 13 Januari 2026</span>
+                        <span>👁️ 5.2K views</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tools Section -->
+        <div id="tools" class="content-section">
+            <h2 style="margin-bottom: 20px;">🛠️ Tools & Resources</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <i data-lucide="calculator" color="white"></i>
+                    </div>
+                    <h3>Gas Fee Calculator</h3>
+                    <p>Hitung estimasi biaya gas untuk transaksi Ethereum dan Layer 2 dalam berbagai kondisi network.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i data-lucide="shield-check" color="white"></i>
+                    </div>
+                    <h3>Contract Checker</h3>
+                    <p>Verifikasi keamanan smart contract sebelum berinteraksi. Deteksi potential scam dan honeypot.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i data-lucide="wallet" color="white"></i>
+                    </div>
+                    <h3>Portfolio Tracker</h3>
+                    <p>Track semua aset crypto Anda di berbagai blockchain dan protocol dalam satu dashboard.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i data-lucide="line-chart" color="white"></i>
+                    </div>
+                    <h3>Price Alerts</h3>
+                    <p>Set price alert untuk token favorit Anda dan dapatkan notifikasi real-time.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i data-lucide="globe" color="white"></i>
+                    </div>
+                    <h3>Network Directory</h3>
+                    <p>Database lengkap RPC endpoints, chain IDs, dan block explorers untuk semua blockchain.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i data-lucide="book-marked" color="white"></i>
+                    </div>
+                    <h3>Glossary Web3</h3>
+                    <p>Kamus istilah Web3, DeFi, dan crypto yang mudah dipahami untuk pemula.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>💬 Bergabung dengan Komunitas</h3>
+            <p style="margin-top: 15px; opacity: 0.9;">
+                Join Telegram, Discord, dan Twitter kami untuk diskusi, update terbaru, dan networking dengan crypto enthusiast lainnya!
+            </p>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.7;">
+                © 2026 Crypto Rooms. Platform Edukasi Web3 Indonesia.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Tab switching functionality
+        function switchTab(tabName) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show selected section
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active class to clicked button
+            event.target.closest('.tab-btn').classList.add('active');
+
+            // Re-initialize icons for newly visible content
+            lucide.createIcons();
+        }
+
+        // Search functionality
+        const searchBox = document.getElementById('searchBox');
+        searchBox.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.card, .article-item');
+            
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Add hover effect animations
+        document.querySelectorAll('.card, .article-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transition = 'all 0.3s ease';
+            });
+        });
+    </script>
+</body>
+</html>
