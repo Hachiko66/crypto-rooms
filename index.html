@@ -3,238 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Platform Edukasi Web3 Terlengkap untuk Pemula Indonesia - Airdrop, Tutorial, Berita Crypto">
-    <meta name="keywords" content="crypto, web3, airdrop, blockchain, defi, nft, edukasi">
     <title>Crypto Rooms - Edukasi Web3 untuk Pemula</title>
-    
-    <!-- Lucide Icons -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
-    
-    <!-- Stylesheets -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 <body>
-    <!-- Header Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <h2>Crypto Rooms</h2>
-            </div>
-            <div class="nav-menu" id="navMenu">
-                <a href="index.html" class="nav-link active">
-                    <i data-lucide="home"></i> Beranda
-                </a>
-                <a href="pages/airdrop.html" class="nav-link">
-                    <i data-lucide="gift"></i> Airdrop
-                </a>
-                <a href="pages/education.html" class="nav-link">
-                    <i data-lucide="book-open"></i> Edukasi
-                </a>
-                <a href="pages/news.html" class="nav-link">
-                    <i data-lucide="newspaper"></i> Berita
-                </a>
-                <a href="pages/tools.html" class="nav-link">
-                    <i data-lucide="wrench"></i> Tools
-                </a>
-            </div>
-            <div class="nav-toggle" id="navToggle">
-                <i data-lucide="menu"></i>
-            </div>
-        </div>
-    </nav>
+    <div class="container">
+        <header>
+            <h1>Crypto Rooms</h1>
+            <p class="tagline">Platform Edukasi Web3 Terlengkap untuk Pemula Indonesia</p>
+        </header>
 
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Crypto Rooms</h1>
-                <p class="hero-subtitle">Platform Edukasi Web3 Terlengkap untuk Pemula Indonesia</p>
-                <div class="hero-buttons">
-                    <a href="pages/education.html" class="btn btn-primary">
-                        <i data-lucide="rocket"></i> Mulai Belajar
-                    </a>
-                    <a href="pages/airdrop.html" class="btn btn-secondary">
-                        <i data-lucide="gift"></i> Lihat Airdrop
-                    </a>
-                </div>
-            </div>
-        </div>
-    </header>
+        <input type="text" class="search-box" placeholder="🔍 Cari topik, airdrop, atau panduan..." id="searchBox">
 
-    <!-- Search Section -->
-    <section class="search-section">
-        <div class="container">
-            <input type="text" class="search-box" placeholder="🔍 Cari topik, airdrop, atau panduan..." id="searchBox">
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="switchTab('home')">
+                <i data-lucide="home"></i> Beranda
+            </button>
+            <button class="tab-btn" onclick="switchTab('airdrop')">
+                <i data-lucide="gift"></i> Airdrop
+            </button>
+            <button class="tab-btn" onclick="switchTab('education')">
+                <i data-lucide="book-open"></i> Edukasi
+            </button>
+            <button class="tab-btn" onclick="switchTab('news')">
+                <i data-lucide="newspaper"></i> Berita
+            </button>
+            <button class="tab-btn" onclick="switchTab('tools')">
+                <i data-lucide="wrench"></i> Tools
+            </button>
         </div>
-    </section>
 
-    <!-- Stats Section -->
-    <section class="stats-section">
-        <div class="container">
+        <!-- Home Section -->
+        <div id="home" class="content-section active">
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-icon">
-                        <i data-lucide="users"></i>
-                    </div>
                     <div class="stat-number">1000+</div>
-                    <div class="stat-label">Member Aktif</div>
+                    <div>Member Aktif</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-icon">
-                        <i data-lucide="book"></i>
-                    </div>
                     <div class="stat-number">50+</div>
-                    <div class="stat-label">Panduan Lengkap</div>
+                    <div>Panduan Lengkap</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-icon">
-                        <i data-lucide="gift"></i>
-                    </div>
                     <div class="stat-number">100+</div>
-                    <div class="stat-label">Airdrop Terdaftar</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i data-lucide="trending-up"></i>
-                    </div>
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Update Real-time</div>
+                    <div>Airdrop Terdaftar</div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Features Section -->
-    <section class="features-section">
-        <div class="container">
-            <h2 class="section-title">🌟 Fitur Unggulan</h2>
+            <h2 style="margin-bottom: 20px;">🌟 Fitur Unggulan</h2>
             <div class="card-grid">
                 <div class="card">
                     <div class="card-icon">
-                        <i data-lucide="gift"></i>
+                        <i data-lucide="gift" color="white"></i>
                     </div>
                     <h3>Airdrop Terbaru</h3>
                     <p>Informasi airdrop terkini dengan panduan lengkap dan langkah-langkah detail untuk mendapatkan token gratis dari berbagai project Web3.</p>
-                    <a href="pages/airdrop.html" class="card-link">
-                        Lihat Semua <i data-lucide="arrow-right"></i>
-                    </a>
                 </div>
                 <div class="card">
                     <div class="card-icon">
-                        <i data-lucide="graduation-cap"></i>
+                        <i data-lucide="graduation-cap" color="white"></i>
                     </div>
                     <h3>Edukasi Pemula</h3>
                     <p>Tutorial step-by-step untuk memulai perjalanan Web3 Anda, dari membuat wallet hingga berinteraksi dengan DeFi dan NFT.</p>
-                    <a href="pages/education.html" class="card-link">
-                        Mulai Belajar <i data-lucide="arrow-right"></i>
-                    </a>
                 </div>
                 <div class="card">
                     <div class="card-icon">
-                        <i data-lucide="trending-up"></i>
+                        <i data-lucide="trending-up" color="white"></i>
                     </div>
                     <h3>Analisa Market</h3>
                     <p>Update harian kondisi pasar crypto, analisa teknikal, dan fundamental untuk membantu pengambilan keputusan investasi Anda.</p>
-                    <a href="pages/news.html" class="card-link">
-                        Baca Berita <i data-lucide="arrow-right"></i>
-                    </a>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Latest Updates Section -->
-    <section class="updates-section">
-        <div class="container">
-            <h2 class="section-title">📢 Update Terbaru</h2>
-            <div class="updates-grid">
-                <article class="update-card">
-                    <span class="update-badge">Airdrop</span>
-                    <h3>Arbitrum Phase 2 - Deadline 30 Feb</h3>
-                    <p>Kesempatan terakhir mendapatkan ARB token senilai $200-$500 per wallet.</p>
-                    <div class="update-meta">
-                        <span><i data-lucide="calendar"></i> 2 jam lalu</span>
-                        <span><i data-lucide="eye"></i> 2.5K views</span>
+        <!-- Airdrop Section -->
+        <div id="airdrop" class="content-section">
+            <h2 style="margin-bottom: 20px;">🎁 Airdrop Aktif</h2>
+            <div class="article-list">
+                <div class="article-item">
+                    <h3>Arbitrum Airdrop - Phase 2</h3>
+                    <p>Dapatkan token ARB gratis dengan berpartisipasi dalam ekosistem Arbitrum. Reward hingga $500 per wallet!</p>
+                    <div class="article-meta">
+                        <span>⏰ Berakhir: 30 Februari 2026</span>
+                        <span>💰 Estimasi: $200-$500</span>
+                        <span>⭐ Difficulty: Medium</span>
                     </div>
-                </article>
-                <article class="update-card">
-                    <span class="update-badge news">Berita</span>
-                    <h3>Bitcoin ETF Approved by SEC</h3>
-                    <p>Persetujuan ETF Bitcoin membuka jalan investor institusional masuk pasar crypto.</p>
-                    <div class="update-meta">
-                        <span><i data-lucide="calendar"></i> 5 jam lalu</span>
-                        <span><i data-lucide="eye"></i> 5.2K views</span>
+                    <div style="margin-top: 15px;">
+                        <span class="badge">DeFi</span>
+                        <span class="badge">Layer 2</span>
+                        <span class="badge">Confirmed</span>
                     </div>
-                </article>
-                <article class="update-card">
-                    <span class="update-badge tutorial">Tutorial</span>
-                    <h3>Panduan Lengkap Setup MetaMask</h3>
-                    <p>Langkah demi langkah membuat dan mengamankan wallet MetaMask untuk pemula.</p>
-                    <div class="update-meta">
-                        <span><i data-lucide="calendar"></i> 1 hari lalu</span>
-                        <span><i data-lucide="eye"></i> 3.8K views</span>
+                </div>
+                <div class="article-item">
+                    <h3>zkSync Era Airdrop</h3>
+                    <p>Interaksi dengan zkSync Era untuk kualifikasi airdrop. Protocol Layer 2 dengan teknologi zero-knowledge.</p>
+                    <div class="article-meta">
+                        <span>⏰ Berakhir: TBA</span>
+                        <span>💰 Estimasi: $300-$800</span>
+                        <span>⭐ Difficulty: Easy</span>
                     </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Siap Memulai Perjalanan Web3 Anda?</h2>
-                <p>Bergabunglah dengan ribuan member yang sudah belajar dan mendapatkan airdrop bersama kami</p>
-                <div class="cta-buttons">
-                    <a href="pages/education.html" class="btn btn-primary btn-lg">
-                        <i data-lucide="book-open"></i> Mulai Belajar Sekarang
-                    </a>
+                    <div style="margin-top: 15px;">
+                        <span class="badge">Layer 2</span>
+                        <span class="badge">ZK-Rollup</span>
+                        <span class="badge">Potential</span>
+                    </div>
+                </div>
+                <div class="article-item">
+                    <h3>LayerZero Omnichain Airdrop</h3>
+                    <p>Gunakan bridge LayerZero untuk transfer asset cross-chain dan dapatkan kualifikasi airdrop.</p>
+                    <div class="article-meta">
+                        <span>⏰ Berakhir: TBA</span>
+                        <span>💰 Estimasi: $500-$1000</span>
+                        <span>⭐ Difficulty: Medium</span>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <span class="badge">Cross-Chain</span>
+                        <span class="badge">Infrastructure</span>
+                        <span class="badge">High Potential</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>Crypto Rooms</h3>
-                    <p>Platform Edukasi Web3 Terlengkap untuk Pemula Indonesia</p>
+        <!-- Education Section -->
+        <div id="education" class="content-section">
+            <h2 style="margin-bottom: 20px;">📚 Panduan Edukasi</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>1️⃣ Dasar-Dasar Web3</h3>
+                    <p><strong>Topik:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                        <li>Apa itu Blockchain?</li>
+                        <li>Perbedaan Web2 vs Web3</li>
+                        <li>Konsep Decentralization</li>
+                        <li>Smart Contract 101</li>
+                    </ul>
                 </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Platform</h4>
-                        <a href="pages/airdrop.html">Airdrop</a>
-                        <a href="pages/education.html">Edukasi</a>
-                        <a href="pages/news.html">Berita</a>
-                        <a href="pages/tools.html">Tools</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Komunitas</h4>
-                        <a href="#" target="_blank">Telegram</a>
-                        <a href="#" target="_blank">Discord</a>
-                        <a href="#" target="_blank">Twitter</a>
-                        <a href="#" target="_blank">YouTube</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Resources</h4>
-                        <a href="#">FAQ</a>
-                        <a href="#">Dokumentasi</a>
-                        <a href="#">Blog</a>
-                        <a href="#">Kontak</a>
-                    </div>
+                <div class="card">
+                    <h3>2️⃣ Membuat Wallet</h3>
+                    <p><strong>Tutorial:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                        <li>Setup MetaMask</li>
+                        <li>Keamanan Seed Phrase</li>
+                        <li>Menambah Network</li>
+                        <li>Backup & Recovery</li>
+                    </ul>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2026 Crypto Rooms. Platform Edukasi Web3 Indonesia.</p>
+                <div class="card">
+                    <h3>3️⃣ DeFi untuk Pemula</h3>
+                    <p><strong>Pembelajaran:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                        <li>Swap Token di DEX</li>
+                        <li>Yield Farming Basics</li>
+                        <li>Liquidity Pool</li>
+                        <li>Staking & Rewards</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>4️⃣ NFT Ecosystem</h3>
+                    <p><strong>Panduan:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                        <li>Membeli NFT Pertama</li>
+                        <li>Minting NFT</li>
+                        <li>NFT Marketplace</li>
+                        <li>Trading Tips</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>5️⃣ Keamanan Web3</h3>
+                    <p><strong>Best Practices:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                        <li>Menghindari Scam</li>
+                        <li>Verifikasi Smart Contract</li>
+                        <li>Hardware Wallet</li>
+                        <li>2FA & Security</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>6️⃣ Advanced Topics</h3>
+                    <p><strong>Level Lanjut:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                        <li>Layer 2 Solutions</li>
+                        <li>Cross-Chain Bridge</li>
+                        <li>DAO Governance</li>
+                        <li>On-Chain Analysis</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </footer>
 
-    <!-- Scripts -->
+        <!-- News Section -->
+        <div id="news" class="content-section">
+            <h2 style="margin-bottom: 20px;">📰 Berita & Update Terbaru</h2>
+            <div class="article-list">
+                <div class="article-item">
+                    <h3>Bitcoin ETF Mendapat Approval dari SEC</h3>
+                    <p>Komisi Sekuritas dan Bursa AS menyetujui ETF Bitcoin spot pertama, membuka jalan bagi investor institusional untuk masuk ke pasar crypto dengan lebih mudah.</p>
+                    <div class="article-meta">
+                        <span>📅 15 Januari 2026</span>
+                        <span>👁️ 2.5K views</span>
+                    </div>
+                </div>
+                <div class="article-item">
+                    <h3>Ethereum Berhasil Upgrade ke ETH 3.0</h3>
+                    <p>Network Ethereum menyelesaikan upgrade besar yang meningkatkan skalabilitas hingga 100x lipat dengan tetap mempertahankan desentralisasi.</p>
+                    <div class="article-meta">
+                        <span>📅 14 Januari 2026</span>
+                        <span>👁️ 3.8K views</span>
+                    </div>
+                </div>
+                <div class="article-item">
+                    <h3>Regulasi Crypto Indonesia Terbaru 2026</h3>
+                    <p>Bappebti mengumumkan framework regulasi baru untuk cryptocurrency dan aset digital, memberikan kepastian hukum bagi investor Indonesia.</p>
+                    <div class="article-meta">
+                        <span>📅 13 Januari 2026</span>
+                        <span>👁️ 5.2K views</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tools Section -->
+        <div id="tools" class="content-section">
+            <h2 style="margin-bottom: 20px;">🛠️ Tools & Resources</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <i data-lucide="calculator" color="white"></i>
+                    </div>
+                    <h3>Gas Fee Calculator</h3>
+                    <p>Hitung estimasi biaya gas untuk transaksi Ethereum dan Layer 2 dalam berbagai kondisi network.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i data-lucide="shield-check" color="white"></i>
+                    </div>
+                    <h3>Contract Checker</h3>
+                    <p>Verifikasi keamanan smart contract sebelum berinteraksi. Deteksi potential scam dan honeypot.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i data-lucide="wallet" color="white"></i>
+                    </div>
+                    <h3>Portfolio Tracker</h3>
+                    <p>Track semua aset crypto Anda di berbagai blockchain dan protocol dalam satu dashboard.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i data-lucide="line-chart" color="white"></i>
+                    </div>
+                    <h3>Price Alerts</h3>
+                    <p>Set price alert untuk token favorit Anda dan dapatkan notifikasi real-time.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i data-lucide="globe" color="white"></i>
+                    </div>
+                    <h3>Network Directory</h3>
+                    <p>Database lengkap RPC endpoints, chain IDs, dan block explorers untuk semua blockchain.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i data-lucide="book-marked" color="white"></i>
+                    </div>
+                    <h3>Glossary Web3</h3>
+                    <p>Kamus istilah Web3, DeFi, dan crypto yang mudah dipahami untuk pemula.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>💬 Bergabung dengan Komunitas</h3>
+            <p style="margin-top: 15px; opacity: 0.9;">
+                Join Telegram, Discord, dan Twitter kami untuk diskusi, update terbaru, dan networking dengan crypto enthusiast lainnya!
+            </p>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.7;">
+                © 2026 Crypto Rooms. Platform Edukasi Web3 Indonesia.
+            </p>
+        </div>
+    </div>
+
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/components.js"></script>
 </body>
 </html>
