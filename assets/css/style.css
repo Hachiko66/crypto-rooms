@@ -5,10 +5,12 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
-    min-height: 100vh;
-    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%) !important;
+    min-height: 100vh !important;
+    color: #e0e0e0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .container {
